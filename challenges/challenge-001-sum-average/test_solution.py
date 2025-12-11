@@ -1,28 +1,32 @@
-"""
-challenge-001-sum-average/solution.py
-Problem: Given two numbers a and b, return their sum and average.
-Language: Python
-Return format: (sum, average) where average is a float if needed.
-"""
+import pytest
+from solution import sum_and_average
 
-from typing import Tuple
+def test_positive_integers():
+    s, avg = sum_and_average(4, 6)
+    assert s == 10
+    assert avg == 5
 
-def sum_and_average(a: float, b: float) -> Tuple[float, float]:
-    """
-    Return (sum, average) of two numbers.
-    This function accepts ints or floats.
-    """
-    s = a + b
-    avg = s / 2
-    return s, avg
+def test_negative_numbers():
+    s, avg = sum_and_average(-3, -7)
+    assert s == -10
+    assert avg == -5
 
-if __name__ == "__main__":
-    # simple interactive demo (not used by tests)
-    import sys
-    if len(sys.argv) >= 3:
-        a = float(sys.argv[1])
-        b = float(sys.argv[2])
-        s, avg = sum_and_average(a, b)
-        print(f"sum={s}, average={avg}")
-    else:
-        print("Usage: python solution.py <num1> <num2>")
+def test_mixed_signs():
+    s, avg = sum_and_average(10, -4)
+    assert s == 6
+    assert avg == 3
+
+def test_floats():
+    s, avg = sum_and_average(2.5, 1.5)
+    assert s == pytest.approx(4.0)
+    assert avg == pytest.approx(2.0)
+
+def test_zero_edgecase():
+    s, avg = sum_and_average(0, 0)
+    assert s == 0
+    assert avg == 0
+
+def test_large_values():
+    s, avg = sum_and_average(10**18, 10**18)
+    assert s == 2 * 10**18
+    assert avg == 10**18
