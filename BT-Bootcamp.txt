@@ -1,0 +1,22 @@
+BT-Bootcamp
+
+
+
+
+#.python -m pytest -q -vv  //to run my code
+
+
+
+
+
+3.git add .      //changes will get pushed 
+
+
+4.git commit -m "Complete Challenge 006: even odd with tests"
+
+
+5.git push -u origin challenge-006
+
+2.git checkout -b challenge-006
+
+1.mkdir challenge-060-multiply-two-matrix && cd challenge-060-multiply-two-matrix && type nul > solution.py && type nul > test_solution.py && type nul > README.md 
